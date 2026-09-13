@@ -1,7 +1,7 @@
 services:
   node-app:
     container_name: express-node-app-container
-
+    image: farouq666/testingdockerwithdeployapptoaws
     ports:
       - "4000:4000"
 
