@@ -2,7 +2,8 @@ services:
   node-app:
     build:
       context: .
-      target: development
+      args:
+        - NODE_ENV=production
 
     volumes:
       - ./src:/app/src:ro

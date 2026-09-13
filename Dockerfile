@@ -1,27 +1,14 @@
-FROM node:24-alpine AS base
-
+FROM node:14
 WORKDIR /app
-
 COPY package*.json ./
 
-
-FROM base AS development
-
-RUN npm ci
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ]; \
+    then npm install; \
+    else npm install --only=production; \
+    fi
 
 COPY . .
-
-EXPOSE 4000
-
+ENV PORT=3000
+EXPOSE ${PORT}
 CMD ["npm", "run", "start-dev"]
-
-
-FROM base AS production
-
-RUN npm ci --omit=dev
-
-COPY . .
-
-EXPOSE 4000
-
-CMD ["npm", "start"]
