@@ -2,11 +2,16 @@ services:
   node-app:
     container_name: express-node-app-container
     image: farouq666/testingdockerwithdeployapptoaws
-    ports:
-      - "4000:4000"
-
     env_file:
       - ./.env 
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
     depends_on:
       - mongo
   mongo:
