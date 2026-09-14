@@ -1,6 +1,5 @@
 services:
   node-app:
-    container_name: express-node-app-container
     image: farouq666/testingdockerwithdeployapptoaws
     env_file:
       - ./.env 
@@ -22,6 +21,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      GLIBC_TUNABLES: glibc.pthread.rseq=1
 
   nginx:
     image: nginx:stable-alpine
