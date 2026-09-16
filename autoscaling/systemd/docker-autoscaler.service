@@ -1,0 +1,14 @@
+	[Unit]
+Description=Docker Swarm CPU Autoscaler
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/home/ubuntu/autoscaler/autoscaler.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
