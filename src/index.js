@@ -18,7 +18,7 @@ mongoose.connect(URI).then(() => {
 });
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello FarouQ from Docker AWS test watchtower !</h1>');
+    res.send('<h1>Hello FarouQ from Docker AWS Testing Docker Swarm !</h1>');
 });
 
 app.listen(PORT, () => {
